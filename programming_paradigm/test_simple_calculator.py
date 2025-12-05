@@ -28,16 +28,12 @@ class TestSimpleCalculator(unittest.TestCase):
 
     def test_multiplication(self):
         """Test the multiply method."""
-        # simple positive numbers
         self.assertEqual(self.calc.multiply(2, 3), 6)
-        # negative * positive
         self.assertEqual(self.calc.multiply(-2, 3), -6)
-        # anything times zero is zero
         self.assertEqual(self.calc.multiply(7, 0), 0)
 
-    def test_divide(self):
+    def test_division(self):
         """Test the divide method, including division by zero."""
-        # normal division
         self.assertEqual(self.calc.divide(10, 2), 5)
         self.assertEqual(self.calc.divide(7, 2), 3.5)
         # divide by zero should return None
