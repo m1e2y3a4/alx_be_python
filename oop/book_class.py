@@ -1,7 +1,7 @@
 # book_class.py
 
 class Book:
-    def __init__(self, title: str, author: str, year: int):
+    def __init__(self, title, author, year):
         """Constructor: initializes a Book instance with title, author, and year."""
         self.title = title
         self.author = author
@@ -11,14 +11,14 @@ class Book:
         """Destructor: called when the object is about to be destroyed."""
         print(f"Deleting {self.title}")
 
-    def __str__(self) -> str:
+    def __str__(self):
         """
         Informal string representation.
         Example: "1984 by George Orwell, published in 1949"
         """
         return f"{self.title} by {self.author}, published in {self.year}"
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         """
         Official string representation that could be used to recreate the object.
         Example: "Book('1984', 'George Orwell', 1949)"
