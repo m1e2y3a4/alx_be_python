@@ -2,51 +2,53 @@
 
 class Book:
     def __init__(self, title, author):
-        """Base Book class with common attributes."""
+        # Base Book class with common attributes
         self.title = title
         self.author = author
+
+    def __str__(self):
+        # String representation for a regular book
+        return f"Book: {self.title} by {self.author}"
 
 
 class EBook(Book):
     def __init__(self, title, author, file_size):
-        """
-        EBook class that inherits from Book and adds file_size.
-        file_size is expected to be an integer (e.g., in KB).
-        """
+        # EBook inherits from Book and adds file_size
         super().__init__(title, author)
         self.file_size = file_size
+
+    def __str__(self):
+        # String representation for an ebook
+        return (
+            f"EBook: {self.title} by {self.author}, "
+            f"File Size: {self.file_size}KB"
+        )
 
 
 class PrintBook(Book):
     def __init__(self, title, author, page_count):
-        """
-        PrintBook class that inherits from Book and adds page_count.
-        page_count is expected to be an integer.
-        """
+        # PrintBook inherits from Book and adds page_count
         super().__init__(title, author)
         self.page_count = page_count
+
+    def __str__(self):
+        # String representation for a printed book
+        return (
+            f"PrintBook: {self.title} by {self.author}, "
+            f"Page Count: {self.page_count}"
+        )
 
 
 class Library:
     def __init__(self):
-        """Library uses composition to manage a collection of books."""
+        # Library uses composition to hold a list of books
         self.books = []
 
     def add_book(self, book):
-        """Add a Book, EBook, or PrintBook instance to the library."""
+        # Add a Book, EBook, or PrintBook instance
         self.books.append(book)
 
     def list_books(self):
-        """Print details of each book stored in the library."""
+        # Print details of each book (polymorphic via __str__)
         for book in self.books:
-            if isinstance(book, EBook):
-                print(
-                    f"EBook: {book.title} by {book.author}, File Size: {book.file_size}KB"
-                )
-            elif isinstance(book, PrintBook):
-                print(
-                    f"PrintBook: {book.title} by {book.author}, Page Count: {book.page_count}"
-                )
-            else:
-                # Plain Book instance
-                print(f"Book: {book.title} by {book.author}")
+            print(book)
